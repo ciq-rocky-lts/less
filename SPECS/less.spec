@@ -1,7 +1,7 @@
 Summary: A text file browser similar to more, but better
 Name: less
 Version: 458
-Release: 11%{?dist}
+Release: 12%{?dist}
 License: GPLv3+
 Group: Applications/Text
 Source: http://www.greenwoodsoftware.com/less/%{name}-%{version}.tar.gz
@@ -20,7 +20,7 @@ Patch10: less-458-lesskey-usage.patch
 Patch11: less-458-old-bot-in-help.patch
 Patch12: less-458-use-backslash.patch
 Patch13: less-458-CVE-2024-32487.patch
-# Patch14: less-530-CVE-2022-48624.patch
+Patch14: less-530-CVE-2022-48624.patch
 
 URL: http://www.greenwoodsoftware.com/less/
 Requires: groff-base
@@ -51,7 +51,7 @@ files, and you'll use it frequently.
 %patch11 -p1 -b .oldbothelp
 %patch12 -p2 -b .use-backslash
 %patch13 -p1 -b .CVE-2024-32487
-# %patch14 -p1 -b .CVE-2022-48624
+%patch14 -p1 -b .CVE-2022-48624
 
 autoreconf
 
@@ -82,6 +82,9 @@ ls -la $RPM_BUILD_ROOT/etc/profile.d
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Thu Nov 21 2024 Matt Hink <mhink@ciq.com> - 458-12
+- Fix CVE-2022-48624
+
 * Wed Nov 20 2024 Matt Hink <mhink@ciq.com> - 458-11
 - Fix CVE-2022-48624
 
